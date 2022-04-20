@@ -5,10 +5,7 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const path = require('path');
 
 // TODO: Create an array of questions for user input
-const questions =
-    //inquirer 
-    // .prompt ([
-    [
+const questions = [
         {
             type: 'input',
             message: 'What is the title of your project?',
@@ -55,7 +52,7 @@ const questions =
             message: 'Who contributed to this repo?',
             name: 'contributors',
         },
-    ]
+    ];
 
 
 // TODO: Create a function to write README file
@@ -63,10 +60,15 @@ function writeToFile(fileName, data) {
     inquirer
         .prompt(questions)
 
-        .then((data) => {
+        .then((data) => { 
 
             // use markdown syntax? instead of html :(
-            let info = 
+            let info = `\n # ${data.title} \n
+            \n-----------------------------------------\n 
+           \n ## Description \n
+           \n-----------------------------------------\n 
+           > ${data.description}
+            `
 
             fs.writeFile('README.md', info, (err) => {
                 err ? console.log(err) : console.log('Generating README...')
