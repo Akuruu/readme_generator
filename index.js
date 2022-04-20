@@ -13,8 +13,38 @@ const questions = [
       },
       {
         type: 'input',
-        message: 'What is your name',
-        name: 'yourname',
+        message: 'What is your Github Username?',
+        name: 'username',
+      },
+      {
+        type: 'input',
+        message: 'What is your email address?',
+        name: 'email',
+      },
+      {
+        type: 'input',
+        message: 'Please write a description of your project.',
+        name: 'description',
+      },
+      {
+        type: 'input',
+        message: 'What command should I run to install dependencies?',
+        name: 'install',
+      },
+      {
+        type: 'input',
+        message: 'What command should I run for tests?',
+        name: 'test',
+      },
+      {
+        type: 'input',
+        message: 'What should your user need to know about using the repository?',
+        name: 'repo',
+      },
+      {
+        type: 'input',
+        message: 'Who contributed to this repo?',
+        name: 'contributors',
       },
     {
         type: 'list',
@@ -26,16 +56,13 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
-/*  .then((answers) => {
-    const filename = `${answers.yourname.toLowerCase().split(' ').join('')}.json`;
+/*          fs.writeFile('data.html', info, (err) => {
+            err ? console.log(err) : console.log('success')
+        })
 
-    fs.writeFile(filename, JSON.stringify(answers, null, '\t'), (err) =>
-    err ? console.log(err) : console.log('Generating README...')
-    );
-
-   }).catch((err) => {
-       if (err) throw err;
-   });
+    }).catch((err) => {
+        if (err) throw err;
+    });
 
 // TODO: Create a function to initialize app
 function init() {}
