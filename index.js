@@ -18,6 +18,11 @@ const questions = [
     },
     {
         type: 'input',
+        message: 'Please add a link to your github profile',
+        name: 'gitlink',
+    },
+    {
+        type: 'input',
         message: 'What is your email address?',
         name: 'email',
     },
@@ -100,8 +105,8 @@ function writeToFile(fileName, data) {
             - [${data.contributors}]()
 
             \n ## Questions?\n
-           \n  My Github: [${data.username}](${data.username})\n
-            \n Contact Me: [${data.username}](${data.username}}) \n
+           \n  My Github: [${data.username}](${data.gitlink})\n
+            \n Contact Me: ${data.email} \n
             `
 
             fs.writeFile('README.md', info, (err) => {
