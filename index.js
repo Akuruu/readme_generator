@@ -2,7 +2,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-const path = require('path');
+// const path = require('path');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -67,44 +67,22 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    inquirer
-        .prompt(questions)
-
-        .then((data) => {
-
-            // use markdown syntax? instead of html :(
-            let info = generateMarkdown();
-
-            fs.writeFile('README.md', info, (err) => {
-                err ? console.log(err) : console.log('Generating README...')
-            })
-        }).catch((err) => {
-            if (err) throw err;
-     // Sets an empty string for empty choices
-        if (link !== None) {
-            return "";
-          }
-          if (contributors !== None) {
-            return "";
-          }
-          if (install !== None) {
-            return "";
-          }
-          if (usage !== None) {
-            return "";
-          }
-
-        });
-    }
-
-        
-
-writeToFile();
-
+    fs.writeFile('README.md', data, (err) => {
+        err ? console.log(err) : console.log('Generating README...')
+    })
+}
 
 // TODO: Create a function to initialize app
-//function init() { }
+function init() { 
+    inquirer
+     .prompt(questions)
+     .then((data) => {
+         writeToFile('README.md', generateMarkdown(data))
+     }).catch((err) => {
+         if (err) throw err;
+     })
+}
 
-// Function call to initialize app
-//init()
-    
+//Function call to initialize app
+init()
+        
