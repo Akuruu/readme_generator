@@ -73,48 +73,7 @@ function writeToFile(fileName, data) {
         .then((data) => {
 
             // use markdown syntax? instead of html :(
-            let info = `
-            \n # ${data.title} \n
-
-            \n ## Table of Contents \n
-            \n-----------------------------------------\n 
-          \n - [Description](#description) \n
-          \n - [Showcase](#link) \n
-          \n - [Installation Instructions](#install\n
-          \n - [Usage Information](#usage) \n
-          \n - [Licenses](#license) \n
-          \n - [Contributors](#contributors) \n
-          \n - [Questions?](#username) \n
-
-           \n ## Description \n
-           \n-----------------------------------------\n 
-           \n ${data.description}\n
-
-           \n ## Showcase\n
-           \n-----------------------------------------\n 
-           \n ![alt text](${data.link})\n
-
-         \n ## Installation Instructions\n
-         \n-----------------------------------------\n 
-         \n ${data.install}\n
-
-           \n ## Usage Information \n
-           \n-----------------------------------------\n 
-           \n  ${data.usage}\n
-
-          \n  ## Licenses \n
-          \n-----------------------------------------\n 
-          \n ${data.license}\n
-
-            \n ## Contributors\n
-            \n-----------------------------------------\n 
-            \n - [${data.contributors}]()\n
-
-            \n ## Questions?\n
-            \n-----------------------------------------\n 
-           \n  My Github: [${data.username}](${data.gitlink})\n
-            \n Contact Me: ${data.email} \n
-            `
+            let info = generateMarkdown();
 
             fs.writeFile('README.md', info, (err) => {
                 err ? console.log(err) : console.log('Generating README...')
