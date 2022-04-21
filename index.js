@@ -37,7 +37,7 @@ const questions = [
         name: 'link',
     },
     {
-        type: 'list',
+        type: 'checkbox',
         name: 'license',
         message: 'What kind of license should your project have?',
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'ISC', 'None'],
@@ -75,36 +75,43 @@ function writeToFile(fileName, data) {
             // use markdown syntax? instead of html :(
             let info = `
             \n # ${data.title} \n
-            \n-----------------------------------------\n 
+
             \n ## Table of Contents \n
             \n-----------------------------------------\n 
-          \n - Description \n
-          \n - Showcase \n
-          \n - Installation Instructions\n
-          \n - Usage Information \n
-          \n - Licenses \n
-          \n - Contributors \n
-          \n - Questions? \n
+          \n - [Description](#description) \n
+          \n - [Showcase](#link) \n
+          \n - [Installation Instructions](#install\n
+          \n - [Usage Information](#usage) \n
+          \n - [Licenses](#license) \n
+          \n - [Contributors](#contributors) \n
+          \n - [Questions?](#username) \n
 
            \n ## Description \n
-            ${data.description}
+           \n-----------------------------------------\n 
+           \n ${data.description}\n
 
            \n ## Showcase\n
-            ![alt text](${data.link})
+           \n-----------------------------------------\n 
+           \n ![alt text](${data.link})\n
 
          \n ## Installation Instructions\n
-            ${data.install}
+         \n-----------------------------------------\n 
+         \n ${data.install}\n
 
            \n ## Usage Information \n
-             ${data.usage}
+           \n-----------------------------------------\n 
+           \n  ${data.usage}\n
 
           \n  ## Licenses \n
-            ${data.license}
+          \n-----------------------------------------\n 
+          \n ${data.license}\n
 
             \n ## Contributors\n
-            - [${data.contributors}]()
+            \n-----------------------------------------\n 
+            \n - [${data.contributors}]()\n
 
             \n ## Questions?\n
+            \n-----------------------------------------\n 
            \n  My Github: [${data.username}](${data.gitlink})\n
             \n Contact Me: ${data.email} \n
             `
@@ -114,9 +121,24 @@ function writeToFile(fileName, data) {
             })
         }).catch((err) => {
             if (err) throw err;
-        });
+     // Sets an empty string for empty choices
+        if (link !== None) {
+            return "";
+          }
+          if (contributors !== None) {
+            return "";
+          }
+          if (install !== None) {
+            return "";
+          }
+          if (usage !== None) {
+            return "";
+          }
 
-};
+        });
+    }
+
+        
 
 writeToFile();
 
@@ -125,4 +147,5 @@ writeToFile();
 //function init() { }
 
 // Function call to initialize app
-//init();
+//init()
+    
