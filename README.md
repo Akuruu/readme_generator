@@ -46,7 +46,7 @@
       
  ![demo gif](demo.gif)
 
-
+Video Tutorial: https://drive.google.com/file/d/1Zcn6E8hLhepo1JRqsELEaAn2mQEVYHZS/view?usp=sharing
       
  ## Installation Instructions
 
